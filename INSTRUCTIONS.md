@@ -8,10 +8,14 @@ To test the server from a fresh git pull:
 This starts a development testing server on the local device using port 8787.
 
 To test the client:
-- Install Webpack using Node.js
-- Pack the client using `npx webpack`
-- Open the packed file at `frontsend/dist/<INDEX FILE>`
+- Navigate to `./frontend`
+- Install Webpack using Node.js (`npm install` will install all of npm, including webpack)
+- Pack the client using `npm run build:dev`
 
+To test the API:
+- Install HTTPie (https://httpie.io/). You will need to install the desktop version of the application. 
+- Run the client by running `npx wrangler` dev in the `./server` directory (navigate to this). 
+- Once the local server is running, 
 ---
 
 Theoretically, the server worker may be deployed to cloudflare servers using the deploy command (for example `npx wrangler deploy`), though this has not been tested.

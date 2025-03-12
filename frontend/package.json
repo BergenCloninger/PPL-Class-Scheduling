@@ -88,7 +88,8 @@
     "webpack-dev-server": "^5.1.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:dev": "webpack --config ./webpack.config.js --mode=development",
+    "build:release": "webpack --config ./webpack.config.js --mode=production"
   },
   "keywords": [],
   "author": "",

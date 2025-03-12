@@ -7,7 +7,6 @@ module.exports = {
         addFaculty: './faculty/addFaculty.js',
         addSchedule: './schedule/addSchedule.js',
         addFeature: './feature/addFeature.js',
-        
     },
 
     output: {
