@@ -1,6 +1,8 @@
 To test the server from a fresh git pull:
 - Install Node.js
 - Install Rust (1.80.1)
+* Invoke-WebRequest -Uri https://sh.rustup.rs -OutFile rustup-init.exe; .\rustup-init.exe
+* rustup install 1.80.1
 - Navigate to the server directory (`cd server`)
 - Run `npx workers dev`
 This starts a development testing server on the local device using port 8787.
