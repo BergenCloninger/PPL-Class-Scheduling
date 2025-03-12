@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial=1.0">
+  <title>Class Schedule Calendar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../site.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container mt-5">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Calendar Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../class/addClass.html">Add Class</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../room/addRoom.html">Add Room</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../faculty/addFaculty.html">Add Faculity</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="../schedule/addSchedule.html">Add Schedule</a>
+					</li>
+				</ul>
+			</div>
+		</nav>  
+	</div>
+
+	<div class="container mt-5">
+		<div class="calendar-header">
+			<button class="btn btn-secondary back-to-weekly-btn" id="backToWeeklyBtn">Back to Weekly View</button>
+			<h3 id="calendarTitle"></h3>
+		</div>
+
+		<div id="calendarView" class="calendar-view calendar-view-day"></div>
+	</div>
+
+	<div class="modal fade" id="classModal" tabindex="-1" aria-labelledby="classModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="classModalLabel">Class Information</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<h5 id="className"></h5>
+				<p><strong>Status:</strong> <span id="classStatus"></span></p>
+				<p><strong>Details:</strong></p>
+				<div id="classDetails"></div>
+			</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="calendarHome.js"></script>
+</body>
+</html>

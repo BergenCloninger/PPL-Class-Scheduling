@@ -1,0 +1,31 @@
+[package]
+name = "server"
+version = "0.2.0"
+edition.workspace = true
+authors.workspace = true
+
+[package.metadata.release]
+release = false
+
+# https://github.com/rustwasm/wasm-pack/issues/1247
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
+
+[lib]
+crate-type = ["cdylib"]
+
+# TODO: Re-evaluate which dependancies are required (taking care to resolve any duplicates).
+# Remember; we are limited to 1MB! (of which rust itself takes up a non-zero amount)
+[dependencies]
+worker.workspace = true
+worker-macros.workspace = true
+console_error_panic_hook = { version = "0.1.1" }
+http = "1.1"
+http-body-util = "0.1.2"
+bytes = "1.6.0"
+serde.workspace = true
+serde_json.workspace = true
+serde-wasm-bindgen = "0.6.5"
+db = { path = "../db" }
+web-sys = { version = "0.3.76", features = ["ServiceWorkerGlobalScope", "Crypto", "SubtleCrypto", "CryptoKey"] }
+base64 = "0.22.1"

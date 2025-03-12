@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Scheduling</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <link href="../site.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../calendarHome/calendarHome.html">Calendar Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Add Class</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../room/addRoom.html">Add Room</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../faculty/addFaculty.html">Add Faculty</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../schedule/addSchedule.html">Add Schedule</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <h1 class="display-3 text-center">Add A Class</h1>
+
+    <div class="container mt-5 px-lg-5 narrow-container">
+        <div id="notificationBanner" class="alert alert-success d-none fixed-top w-100" role="alert" style="z-index: 1050;"></div>  
+    </div>
+
+    <div class="container mt-5 px-lg-5 narrow-container">
+        <form class="class-scheduling-form">
+            <div class="form-outline mb-4">
+                <label class="form-label" for="className">Class Name</label>
+                <input type="text" id="className" class="form-control"/>
+                <div id="classNameError" class="text-danger errorMessage">
+                    <small id="classNameErrorDisplay"></small>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="classDescription">Class Description</label>
+                <textarea id="classDescription" class="form-control" rows="4"></textarea>
+                <div id="classDescriptionError" class="text-danger errorMessage">
+                    <small id="classDescriptionErrorDisplay"></small>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="classCode">Class Code</label>
+                <input type="text" id="classCode" class="form-control"></input>
+                <div id="classCodeError" class="text-danger errorMessage">
+                    <small id="classCodeErrorDisplay"></small>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="classSection">Class Section</label>
+                <input type="text" id="classSection" class="form-control"></input>
+                <div id="classSectionError" class="text-danger errorMessage">
+                    <small id="classSectionErrorDisplay"></small>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label" for="capacity">Class Capacity</label>
+                <input type="number" id="capacity" class="form-control" min="1"/>
+                <div id="classCapacityError" class="text-danger errorMessage">
+                    <small id="classCapacityErrorDisplay"></small>
+                </div>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label for="facultySelect" class="form-label">Select Faculty</label>
+                <div id="facultySelectError" class="text-danger errorMessage">
+                    <small id="facultySelectErrorDisplay"></small>
+                </div>
+                <select id="facultySelect" class="form-control">
+                    <option value="" disabled selected>Select an option</option>
+                </select>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label for="classScheduleSelect" class="form-label">Select Class Schedule</label>
+                <div id="classScheduleError" class="text-danger errorMessage">
+                    <small id="classScheduleErrorDisplay"></small>
+                </div>
+                <select id="classScheduleSelect" class="form-control">
+                    <option value="" disabled selected>Select an option</option>
+                </select>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label for="classroomSelect" class="form-label">Select Classroom</label>
+                <div id="classClassroomError" class="text-danger errorMessage">
+                    <small id="classClassroomErrorDisplay"></small>
+                </div>
+                <select id="classroomSelect" class="form-control">
+                    <option value="" disabled selected>Select an option</option>
+                </select>
+            </div>
+
+            <div class="form-outline mb-4">
+                <label class="form-label">Class Type</label>
+                <div id="classTypeError" class="text-danger errorMessage">
+                    <small id="classTypeErrorDisplay"></small>
+                </div>
+                <div class="d-flex">
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" id="core" name="classType" value="core">
+                        <label class="form-check-label" for="core">Core</label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" id="elective" name="classType" value="elective">
+                        <label class="form-check-label" for="elective">Elective</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-outline mb-4">
+                <label class="form-label">Class Term</label>
+                <div id="classTermError" class="text-danger errorMessage">
+                    <small id="classTermErrorDisplay"></small>
+                </div>
+                <div class="d-flex">
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" id="fall" name="classTerm" value="fall">
+                        <label class="form-check-label" for="fall">Fall</label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" id="spring" name="classTerm" value="spring">
+                        <label class="form-check-label" for="spring">Spring</label>
+                    </div>
+                </div>
+            </div>                   
+
+            <div class="d-flex justify-content-center mb-4">
+                <button  id="submitClassButton" class="btn btn-primary">Submit Class</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="../dist/addClass.js"></script>
+</body>
+</html>

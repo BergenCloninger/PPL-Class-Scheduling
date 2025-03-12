@@ -1,0 +1,24 @@
+[package]
+name = "db"
+version = "0.1.0"
+edition.workspace = true
+authors.workspace = true
+
+[package.metadata.release]
+release = false
+
+# TODO: Check if this actually does anything (we are an rlib)
+# https://github.com/rustwasm/wasm-pack/issues/1247
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
+
+[lib]
+crate-type = ["rlib"]
+
+# TODO: Re-evaluate which dependancies are required (taking care to resolve any duplicates).
+# Remember; we are limited to 1MB! (of which rust itself takes up a non-zero amount)
+[dependencies]
+worker.workspace = true # HTTP feature unneeded, but stays in line with server package
+worker-macros.workspace = true
+serde.workspace = true # TODO: Do we need serde here?
+serde_json.workspace = true

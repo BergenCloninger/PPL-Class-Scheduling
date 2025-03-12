@@ -1,0 +1,69 @@
+<!-- change from camel case -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Scheduling</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../site.css" rel="stylesheet">
+</head>
+<body>
+    <h1 class="display-3 text-center">Class Scheduling Sign In</h1>
+    <div class="container mt-5 px-lg-5 narrow-container">
+        <form class="registration-block">
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="username" id="usernameInput" class="form-control" />
+                <label class="form-label" for="usernameLable">Username</label>
+
+                <div id="usernameError" class="text-danger errorMessage">
+                    <small id="usernameErrorDisplay"></small>
+                </div>
+            </div>
+        
+            <div data-mdb-input-init class="form-outline mb-4">
+                <input type="password" id="passwordInput" class="form-control" />
+                <label class="form-label" for="passwordLable">Password</label>
+
+                <div id="passwordError" class="text-danger errorMessage">
+                    <small id="passwordErrorDisplay"></small>
+                </div>
+            </div>
+        
+            <div class="d-flex justify-content-center align-items-center mb-4">
+                <div class="d-flex align-items-center me-3">
+                    <p class="me-2 mb-0">I am a:</p>
+                    
+                    <input type="checkbox" value="student" name="role" id="student" class="me-2" />
+                    <label for="student" class="mb-0">Student</label>
+
+                    <input type="checkbox" value="teacher" name="role" id="teacher" class="me-2 ms-3" />
+                    <label for="teacher" class="mb-0">Teacher</label>
+
+                    <input type="checkbox" value="admin" name="role" id="admin" class="me-2 ms-3" />
+                    <label for="admin" class="mb-0">Admin</label>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mb-4">
+                <button type="button" id="signInButton" class="btn btn-primary">Sign in</button>
+            </div>
+
+            <div class="d-flex justify-content-center mb-4 text-danger">
+                <div id="checkboxError" class="text-danger errorMessage">
+                    <small id="checkboxErrorDisplay"></small>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center mb-4">
+                <p>Not a member? <a href="#!">Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="login.js"></script>
+</body>
+</html>
