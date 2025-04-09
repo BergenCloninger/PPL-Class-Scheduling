@@ -3,6 +3,10 @@ use serde::Serialize;
 use worker::*;
 use crate::auth::ActiveUser;
 
+mod class_details;
+#[allow(unused_imports)]
+pub use class_details::*;
+
 mod login;
 #[allow(unused_imports)]
 pub use login::*;
