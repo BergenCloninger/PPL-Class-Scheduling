@@ -15,6 +15,7 @@ pub struct Class {
 	section: String,
 	term: String,
 	year: String,
+	credit_hrs: i32,
 }
 
 impl From<db::read::Class> for Class {
@@ -28,6 +29,7 @@ impl From<db::read::Class> for Class {
 			section: entry.section,
 			term: entry.term,
 			year: entry.year,
+			credit_hrs: entry.credit_hrs,
 		}
 	}
 }
@@ -68,6 +70,7 @@ pub static CLASS: LazyLock<HashMap<http::Method, Callback>> = LazyLock::new(|| {
 				&request.section,
 				&request.term,
 				&request.year,
+				&request.credit_hrs,
 			).await {
 				Ok(_) => Response::ok(""),
 				Err(e) => Response::error(format!("{:?}", e), 500),

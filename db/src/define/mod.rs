@@ -6,7 +6,7 @@ pub async fn define_db(database: &D1Database) -> std::result::Result<(), SQLErro
     let result: Result<D1ExecResult> = database.exec(
         "CREATE TABLE `users` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `username` VARCHAR(255) UNIQUE, `password` VARCHAR(255), `role` VARCHAR(255));
         CREATE TABLE `faculty` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(255), `email` VARCHAR(255), `department` VARCHAR(255));
-        CREATE TABLE `classes` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(255), `description` TEXT, `capacity` INTEGER, `code` VARCHAR(255), `class_type` VARCHAR(255), `section` VARCHAR(255), `term` VARCHAR(255), `year` VARCHAR(255));
+        CREATE TABLE `classes` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(255), `description` TEXT, `capacity` INTEGER, `code` VARCHAR(255), `class_type` VARCHAR(255), `section` VARCHAR(255), `term` VARCHAR(255), `year` VARCHAR(255), `credit_hrs` INTEGER);
         CREATE TABLE `schedules` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `start_hour` INTEGER, `start_minute` INTEGER, `end_hour` INTEGER, `end_minute` INTEGER, `days` VARCHAR(50));
         CREATE TABLE `rooms` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `room_number` VARCHAR(255), `capacity` INTEGER, `room_type` VARCHAR(255));
         CREATE TABLE `features` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` VARCHAR(255), `description` TEXT);

@@ -42,6 +42,7 @@ pub struct Class {
     pub class_type: String,
     pub section: String,
     pub term: String,
+    pub credit_hrs: i32,
 }
 
 pub static GET_COMBINED_DETAILS: LazyLock<HashMap<http::Method, Callback>> = LazyLock::new(|| {

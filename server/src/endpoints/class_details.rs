@@ -90,6 +90,7 @@ pub static CLASS_DETAILS: LazyLock<HashMap<http::Method, Callback>> = LazyLock::
                 &class_details.section,
                 &class_details.term,
                 &class_details.year,
+                &class_details.credit_hrs,
             ).await;
 
             if let Err(e) = class_result {
