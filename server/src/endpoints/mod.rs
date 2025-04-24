@@ -7,6 +7,10 @@ mod class_details;
 #[allow(unused_imports)]
 pub use class_details::*;
 
+mod get_combined_details;
+#[allow(unused_imports)]
+pub use get_combined_details::*;
+
 mod login;
 #[allow(unused_imports)]
 pub use login::*;

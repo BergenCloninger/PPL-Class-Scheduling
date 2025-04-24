@@ -64,6 +64,7 @@ async fn process_operation(database: &D1Database, parts: &Parts, body: &str) -> 
 		("/csr", &*endpoints::CSR),
 		("/cf", &*endpoints::CF),
 		("/cd", &*endpoints::CLASS_DETAILS),
+		("/gcd", &*endpoints::GET_COMBINED_DETAILS),
 		("/rf", &*endpoints::RF)
 	]) });
 

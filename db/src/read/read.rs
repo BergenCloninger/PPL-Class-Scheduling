@@ -165,3 +165,23 @@ pub async fn read_all_from_rooms(database: &D1Database) -> std::result::Result<V
 pub async fn read_all_from_features(database: &D1Database) -> std::result::Result<Vec<Feature>, ReadError> {
     execute_select_all_query::<Feature>(database, "features").await
 }
+
+pub async fn read_all_from_class_schedule_room(database: &D1Database) -> std::result::Result<Vec<ClassScheduleRoom>, ReadError> {
+    execute_select_all_query::<ClassScheduleRoom>(database, "class_schedule_rooms").await
+}
+
+pub async fn read_all_from_class_faculty(database: &D1Database) -> std::result::Result<Vec<ClassFaculty>, ReadError> {
+    execute_select_all_query::<ClassFaculty>(database, "class_faculty").await
+}
+
+pub async fn read_all_from_room_feature(database: &D1Database) -> std::result::Result<Vec<RoomFeature>, ReadError> {
+    execute_select_all_query::<RoomFeature>(database, "room_features").await
+}
+
+pub async fn read_all_from_report(database: &D1Database) -> std::result::Result<Vec<Report>, ReadError> {
+    execute_select_all_query::<Report>(database, "reports").await
+}
+
+pub async fn read_all_from_preference(database: &D1Database) -> std::result::Result<Vec<Preference>, ReadError> {
+    execute_select_all_query::<Preference>(database, "preferences").await
+}

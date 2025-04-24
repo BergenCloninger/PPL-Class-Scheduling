@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct User {
     pub id: i32,
     pub username: String,
@@ -8,7 +8,7 @@ pub struct User {
     pub role: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct Faculty {
     pub id: i32,
     pub name: String,
@@ -16,7 +16,7 @@ pub struct Faculty {
     pub department: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct Class {
     pub id: i32,
     pub name: String,
@@ -28,7 +28,7 @@ pub struct Class {
     pub term: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct Schedule {
     pub id: i32,
     pub start_hour: i32,
@@ -38,7 +38,7 @@ pub struct Schedule {
     pub days: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct Room {
     pub id: i32,
     pub room_number: String,
@@ -46,21 +46,21 @@ pub struct Room {
     pub room_type: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct Feature {
     pub id: i32,
     pub name: String,
     pub description: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct RoomFeature {
     pub id: i32,
     pub room_id: i32,
     pub feature_id: i32,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct Preference {
     pub id: i32,
     pub faculty_id: i32,
@@ -68,7 +68,7 @@ pub struct Preference {
     pub value: String,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct ClassScheduleRoom {
     pub id: i32,
     pub class_id: i32,
@@ -76,14 +76,14 @@ pub struct ClassScheduleRoom {
     pub room_id: i32,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct ClassFaculty {
     pub id: i32,
     pub class_id: i32,
     pub faculty_id: i32,
 }
 
-#[derive(Deserialize, Serialize)]
+#[derive(Deserialize, Serialize, Clone)]
 pub struct Report {
     pub id: i32,
     pub report_type: String,
