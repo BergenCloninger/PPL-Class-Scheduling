@@ -26,6 +26,7 @@ pub struct Class {
     pub class_type: String,
     pub section: String,
     pub term: String,
+    pub year: String,
 }
 
 #[derive(Deserialize, Serialize, Clone)]

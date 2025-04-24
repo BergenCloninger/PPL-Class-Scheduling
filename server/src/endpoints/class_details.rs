@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 use worker::*;
 use std::{collections::HashMap, sync::LazyLock};
+
 use super::{resource_callback, Callback};
 use std::convert::TryInto;
 
@@ -16,7 +17,7 @@ pub struct ClassDetails {
     pub name: String,
 
     #[serde(rename = "Year")]
-    pub year: i32,
+    pub year: String,
 
     #[serde(rename = "Section")]
     pub section: String,
@@ -67,9 +68,7 @@ pub static CLASS_DETAILS: LazyLock<HashMap<http::Method, Callback>> = LazyLock::
         http::Method::POST,
         resource_callback!(database, user, _query, body, {
             user.require_perm(&crate::auth::UserPerms::High)?;
-
             let class_details: ClassDetails = serde_json::from_str(body)?;
-            console_log!("Received class details: {:#?}", class_details);
 
             let class_result = db::create::create_class(
                 &database,
@@ -80,6 +79,7 @@ pub static CLASS_DETAILS: LazyLock<HashMap<http::Method, Callback>> = LazyLock::
                 &class_details.wcu_prefix,
                 &class_details.section,
                 &class_details.term,
+                &class_details.year,
             ).await;
 
             if class_result.is_err() {

@@ -3,6 +3,10 @@ use serde::Serialize;
 use worker::*;
 use crate::auth::ActiveUser;
 
+mod general_update;
+#[allow(unused_imports)]
+pub use general_update::*;
+
 mod class_details;
 #[allow(unused_imports)]
 pub use class_details::*;

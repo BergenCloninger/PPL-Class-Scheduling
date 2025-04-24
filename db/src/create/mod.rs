@@ -54,8 +54,8 @@ pub async fn create_faculty(database: &D1Database, name: &str, email: &str, depa
     execute_insert_query(database, "faculty", &["name", "email", "department"], &[name, email, department]).await
 }
 
-pub async fn create_class(database: &D1Database, name: &str, description: &str, capacity: i32, code: &str, type_: &str, section: &str, term: &str) -> std::result::Result<(), CreateError> {
-    execute_insert_query(database, "classes", &["name", "description", "capacity", "code", "class_type", "section", "term"], &[name, description, &capacity.to_string(), code, type_, section, term]).await
+pub async fn create_class(database: &D1Database, name: &str, description: &str, capacity: i32, code: &str, type_: &str, section: &str, term: &str, year: &String) -> std::result::Result<(), CreateError> {
+    execute_insert_query(database, "classes", &["name", "description", "capacity", "code", "class_type", "section", "term", "year"], &[name, description, &capacity.to_string(), code, type_, section, term, &year.to_string()]).await
 }
 
 pub async fn create_schedule(database: &D1Database, start_hour: i32, start_minute: i32, end_hour: i32, end_minute: i32, days: &str) -> std::result::Result<(), CreateError> {

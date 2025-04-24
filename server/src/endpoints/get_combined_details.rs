@@ -50,7 +50,6 @@ pub static GET_COMBINED_DETAILS: LazyLock<HashMap<http::Method, Callback>> = Laz
             resource_callback!(database, user, query, _body, {
                 user.require_perm(&crate::auth::UserPerms::General)?;
 
-                // Fetch classes and their relationships from the database
                 let classes_res = db::read::read_all_from_classes(&database).await;
                 let class_schedule_rooms_res = db::read::read_all_from_class_schedule_room(&database).await;
                 let class_faculty_res = db::read::read_all_from_class_faculty(&database).await;
@@ -60,7 +59,6 @@ pub static GET_COMBINED_DETAILS: LazyLock<HashMap<http::Method, Callback>> = Laz
                 let faculty_res = db::read::read_all_from_faculty(&database).await;
                 let features_res = db::read::read_all_from_features(&database).await;
 
-                // Handle the database results
                 let classes = match classes_res {
                     Ok(val) => val,
                     Err(e) => return Response::error(format!("{:?}", e), 500),
