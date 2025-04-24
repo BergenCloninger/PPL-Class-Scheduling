@@ -5,6 +5,7 @@ pub mod read;
 pub mod update;
 pub mod delete;
 pub mod define;
+pub mod exists;
 
 #[derive(Debug)]
 pub enum SQLError {
