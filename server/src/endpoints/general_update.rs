@@ -47,6 +47,15 @@ pub static GENERAL_UPDATES: LazyLock<HashMap<http::Method, Callback>> = LazyLock
                             .map_err(|e| Error::RustError(format!("Class update failed: {:?}", e)))?;
                     }
                 }
+
+                if let Some(faculty_id_str) = class_data.get("faculty_id").and_then(|v| v.as_str()) {
+                    let faculty_id: i32 = faculty_id_str.parse()
+                        .map_err(|_| Error::RustError("Invalid faculty ID".into()))?;
+
+                    create_class_faculty(&database, id, faculty_id)
+                        .await
+                        .map_err(|e| Error::RustError(format!("Failed to create class_faculty link: {:?}", e)))?;
+                }
             }
 
             // --- Optional Schedule Update ---
@@ -79,9 +88,8 @@ pub static GENERAL_UPDATES: LazyLock<HashMap<http::Method, Callback>> = LazyLock
                 .ok()
                 .flatten();
 
-                // If not found, create and then fetch
+                // If not found, create and then fetch the schedule ID
                 if schedule_id_opt.is_none() {
-                    // You may still need to pass a default days value if DB requires it
                     create_schedule(&database, start_hour, start_minute, end_hour, end_minute, "MWF")
                         .await
                         .map_err(|e| Error::RustError(format!("Schedule creation failed: {:?}", e)))?;
@@ -102,17 +110,17 @@ pub static GENERAL_UPDATES: LazyLock<HashMap<http::Method, Callback>> = LazyLock
                     .flatten();
                 }
 
-                if let Some(schedule_id) = schedule_id_opt {
-                    if let Some(class_id_str) = class_data.get("id").and_then(|v| v.as_str()) {
-                        let class_id: i32 = class_id_str.parse()
-                            .map_err(|_| Error::RustError("Invalid class ID".into()))?;
+                // Ensure schedule_id exists, if not return an error
+                let schedule_id = schedule_id_opt.ok_or_else(|| Error::RustError("Failed to retrieve or create schedule ID".into()))?;
 
-                        update_class_schedule_room(&database, "schedule_id", &schedule_id.to_string(), class_id)
-                            .await
-                            .map_err(|e| Error::RustError(format!("Failed to update class_schedule_room: {:?}", e)))?;
-                    }
-                } else {
-                    return Response::error("Failed to retrieve or create schedule ID", 500);
+                // --- Class-Schedule-Room (CSR) Link ---
+                if let Some(class_id_str) = class_data.get("id").and_then(|v| v.as_str()) {
+                    let class_id: i32 = class_id_str.parse()
+                        .map_err(|_| Error::RustError("Invalid class ID".into()))?;
+
+                    create_class_schedule_room(&database, class_id, schedule_id.try_into().unwrap(), 1)
+                        .await
+                        .map_err(|e| Error::RustError(format!("Failed to create class_schedule_room: {:?}", e)))?;
                 }
             }
 

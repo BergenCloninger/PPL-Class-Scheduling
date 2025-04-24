@@ -15,6 +15,7 @@ pub struct CombinedClassDetails {
     pub class_type: String,
     pub section: String,
     pub term: String,
+    pub year: String,
     pub schedule: Vec<Schedule>,
     pub faculty: Vec<Faculty>,
     pub room: Vec<Room>,
@@ -131,6 +132,7 @@ pub static GET_COMBINED_DETAILS: LazyLock<HashMap<http::Method, Callback>> = Laz
                         class_type: class.class_type,
                         section: class.section,
                         term: class.term,
+                        year: class.year,
                         schedule: class_schedules.into_iter().cloned().collect(),  // This is now Vec<Schedule>
                         faculty: class_faculties.into_iter().cloned().collect(),
                         room: class_rooms.into_iter().cloned().collect(),
